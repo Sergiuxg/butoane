@@ -1,25 +1,25 @@
-const body = document.querySelector('body');
-const creareaPatratului = document.querySelector('.creareaPatratului');
-const creareaCulorii = document.querySelector('.creareaCulorii');
+document.getElementById('buton1').addEventListener('click', () => {
+    const container = document.getElementById('container');
 
+    if (!document.querySelector('.square')) {
+        const square = document.createElement('div');
+        square.classList.add('square');
+        container.appendChild(square);
+    }
+});
 
-creareaPatratului.onclick = () =>{
-    const patrat = document.createElement('div');
-    patrat.classList.add('patrat');
-    creareaPatratului.append(patrat);
-}
+document.getElementById('buton2').addEventListener('click', () => {
+    const square = document.querySelector('.square');
 
-// creareaCulorii.onclick = () =>{
+    if (square) {
+        const colors = ['red', 'blue', 'green', 'purple', 'orange'];
+        const currentColor = square.style.backgroundColor;
 
-//     patrat.style.backgroundColor = generateRandomColor;
+        let newColor;
+        do {
+            newColor = colors[Math.floor(Math.random() * colors.length)];
+        } while (newColor === currentColor);
 
-//     const generateRandomColor = () =>{
-//         let maxVal = 0xFFFFFF; 
-//         let randomNumber = Math.random() * maxVal; 
-//         randomNumber = Math.floor(randomNumber);
-//         randomNumber = randomNumber.toString(16);
-//         let randColor = randomNumber.padStart(6, 0);   
-//         return #${randColor.toUpperCase()}
-//     }
-//     console.log(generateRandomColor()); 
-// }
+        square.style.backgroundColor = newColor;
+    }
+});
